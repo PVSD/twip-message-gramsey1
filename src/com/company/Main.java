@@ -8,37 +8,33 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner input =  new Scanner(System.in);
-        int option = 0;
         Message m;
         MessageList ml;
 
         while(true){
             System.out.println("What would you like to do?: 1. Send Message 2. Delete Message 3. Move Message 4.Display Messages");
-            option = input.nextInt();
+            int answer = input.nextInt();
             input.nextLine();
 
-            if(option == 1){
-                String txt = "";
-                String num = "";
-                System.out.println("Enter phone number to send to:");
-                num = input.nextLine();
-                System.out.println("Type a message to send:");
-                txt = input.nextLine();
-                m = new Message(num, txt);
-                addToList(m);
-                System.out.println("Message sent.");
-            }
-            else if(option == 2){
-                String n = "";
-                int pos = 0;
-                System.out.print("Enter the phone number this text is from: ");
-                n = input.nextLine();
-                System.out.println("Delete one(1) Delete all(2)");
-                option = input.nextInt();
+            if(answer == 1){
 
-                if(option == 1){
+                System.out.println("Enter person you want to message:");
+                String person = input.nextLine();
+                System.out.println("Type a message to send:");
+                String text = input.nextLine();
+                m = new Message(person, text);
+                addToList(m);
+                System.out.println("Message has sent.");
+            }
+            else if(answer == 2){
+                System.out.print("Enter the person this text is from: ");
+                String n = input.nextLine();
+                System.out.println("Delete one(1) Delete all(2)");
+                answer = input.nextInt();
+
+                if(answer == 1){
                     System.out.print("Enter the position this text is(from oldest(1) to newest): ");
-                    pos = input.nextInt() - 1;
+                   int pos = input.nextInt() - 1;
 
                     boolean found = false;
                     while(true){
@@ -60,7 +56,7 @@ public class Main {
                     System.out.println("Messages deleted.");
                 }
             }
-            else  if(option == 3){
+            else  if(answer == 3){
                 String number = "";
                 int p = 0;
                 System.out.println("Enter the phone number of the message you would like to move: ");
@@ -85,7 +81,7 @@ public class Main {
                     System.out.println("Message forwarded.");
                 }
             }
-            else if(option == 4){
+            else if(answer == 4){
                 String numb = "";
                 System.out.println("Display messages from which number?");
                 numb = input.next();
