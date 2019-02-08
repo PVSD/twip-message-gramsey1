@@ -11,7 +11,7 @@ public class Main {
         Message m;
         MessageList ml;
 
-        while(true){
+        while(true){ //why do you need a while(true) loop?
             System.out.println("What would you like to do?: 1. Send Message 2. Delete Message 3. Move Message 4.Display Messages");
             int answer = input.nextInt();
             input.nextLine();
