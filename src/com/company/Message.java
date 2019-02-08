@@ -1,25 +1,37 @@
 package com.company;
+
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
-/**
- * Created by gr236 on 2/4/19.
- */
 public class Message {
-    public String personTexting;
-    public String texting;
-    public Date recieved;
-    public Message (String person, String text){
-        personTexting = person;
-        texting = text;
+    public String phoneNumber, message;
+    private Date received;
 
-    }
-    public Date getRecievedTime(){
-        return recieved;
+    public Message(String num, String msg){
+        phoneNumber = num;
+        message = msg;
+        received = new Date(System.currentTimeMillis());
     }
 
+    public Date getReceivedTime(){
+        return received;
+    }
+
+    public String getFormattedReceivedTime(){
+        DateFormat df = new SimpleDateFormat("HH:mm");
+        return df.format(received);
+    }
+
+    public void changeData(String n, String m){
+        phoneNumber = n;
+        message = m;
+    }
     public String getNumber(){
-        return personTexting;
+        return phoneNumber;
     }
 
+    public String getMessage(){
+        return message;
+    }
 }
